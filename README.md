@@ -1,80 +1,69 @@
-# 🎖️ Autonomous Incident Commander
-**Bayer AI Hackathon 2026 — Agentic AI Track**
 
-A multi-agent AI system that autonomously investigates system incidents using Google Gemini.
+#  Autonomous Incident Commander
 
----
+our AI system detects,investigates and resolves system failures using logs & metrics.
 
-## 🤖 Agent Architecture
 
-```
-Logs → [Logs Agent] ──────┐
-       [Metrics Agent] ───┼──► [Commander Agent] → Final Verdict + Action Plan
-       [Deploy Agent] ────┘
-```
 
-| Agent | Role | Focus |
-|-------|------|-------|
-| 🔍 **Logs Agent** | Forensic Expert | Error detection, cascade analysis, fix recommendations |
-| 📊 **Metrics Agent** | Telemetry Analyst | CPU/memory/latency anomalies, infra recommendations |
-| 🚀 **Deploy Agent** | Historian | CI/CD event mapping, rollback decisions |
-| 🎖️ **Commander Agent** | Orchestrator | Root cause, severity, prioritized action plan |
+##  What it does
+
+* Reads logs and metrics
+* Detects system issues
+* Finds root cause
+* Suggests solution
 
 ---
 
-## ⚡ Quick Start
+##  Tech Stack
 
-### 1. Install dependencies
+* Python
+* LLM (OpenRouter / Mistral)
+* FastAPI
+* Docker
+
+---
+
+## examples Files
+
+```
+main.py        # API
+app.py         # Logic
+logs.txt       # Sample logs
+metrics.json   # Sample metrics
+Dockerfile
+```
+
+---
+
+
+##  Run with Docker
+
 ```bash
-pip install -r requirements.txt
-```
-
-### 2. Get a free Gemini API key
-→ https://aistudio.google.com/app/apikey (free tier available)
-
-### 3. Run the app
-```bash
-streamlit run app.py
-```
-
-### 4. (Optional) Generate sample logs
-```bash
-python generate_logs.py
-# Creates: sample_logs/app_logs.txt
+docker build -t incident-ai .
+docker run -p 8000:8000 incident-ai
 ```
 
 ---
 
-## 📁 Project Structure
+##  Example
+
+Logs:
+
 ```
-incident_commander/
-├── app.py              # Streamlit UI
-├── agents.py           # All 4 AI agents (Gemini-powered)
-├── generate_logs.py    # Sample log generator
-├── requirements.txt
-├── sample_logs/
-│   └── app_logs.txt    # Generated sample logs
-└── README.md
+ERROR: DB connection timeout
 ```
 
----
+Metrics:
 
-## 🔁 Reasoning Loop
 ```
-DETECT     → Parse incoming log stream
-PLAN       → Launch specialist agents
-INVESTIGATE → Each agent deep-scans its domain
-DECIDE     → Commander synthesises findings
-ACT        → Prioritized action plan generated
-REPORT     → Executive summary + downloadable report
+Latency: 2000ms
 ```
 
----
+Output:
 
-## 💡 Key Features
-- **Upload any log file** (.txt / .log) or paste logs directly
-- **4 AI agents** running in sequence with Gemini 1.5 Flash
-- **Cascade analysis**: detects how one failure triggers another
-- **Metrics extraction**: pulls CPU/memory numbers directly from logs
-- **Deploy correlation**: links errors to deployment events
-- **Download report** as markdown after investigation
+```
+Issue: DB failure
+Root Cause: Connection timeout
+Fix: Check DB or rollback deployment
+```
+
