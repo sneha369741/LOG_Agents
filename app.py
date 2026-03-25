@@ -27,10 +27,10 @@ html, body, [class*="css"] {
     font-family: 'Rajdhani', sans-serif;
 }
 
-.main { background-color: ##FFFFFF; }
+.main { background-color: ##FFB6C1; }
 
 .stApp {
-    background: linear-gradient(135deg, ##FFFFFF 0%, #0d1421 50%, ##FFFFFF 100%);
+    background: linear-gradient(135deg, ##FFB6C1 0%, #0d1421 50%, ##FFB6C1 100%);
 }
 
 h1, h2, h3 {
